@@ -3,16 +3,18 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\UserProductGroup;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class UserProductGroupSeeder extends Seeder
 {
     public function run(): void
     {
-        DB::table('user_product_groups')->insert([
-          'user_id' => 1,
+        $userProductGroup = UserProductGroup::create([
+          'user_id'  => 1,
           'discount' => 15
         ]);
+
+        $userProductGroup->products()->attach([2, 5]);
     }
 }
